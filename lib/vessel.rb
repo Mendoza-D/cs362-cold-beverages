@@ -12,7 +12,8 @@ class Vessel
     @current_volume == 0
   end
 
-  def fill
-    @current_volume = @volume # assume filling it means it gets filled to full capacity
+  def fill(amount = nil)
+    amount ||= @volume # set to max if no amount is specified
+    @current_volume = [@current_volume + amount, @volume].min # fill the vessel to its maximum capacity
   end
 end
